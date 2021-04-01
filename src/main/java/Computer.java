@@ -1,4 +1,5 @@
 import drive.Drive;
+import usbdevice.USBDivace;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ public class Computer {
     private Drive drive;
     private Headphones headphones;
 
-    List<USBDivace> usbDivaces = new ArrayList<>();
+     private  List<USBDivace> usbDivaces = new ArrayList<>();
 
     public Computer(Monitor monitor, Drive drive) {
         this.monitor = monitor;
@@ -41,5 +42,27 @@ public class Computer {
 
     public void setHeadphones(Headphones headphones) {
         this.headphones = headphones;
+    }
+
+    public List<USBDivace> getUsbDivaces() {
+        return usbDivaces;
+    }
+
+    public void setUSBbDivaces(List<USBDivace> usbDivaces) {
+        this.usbDivaces = usbDivaces;
+    }
+    public void addDicace(USBDivace usbDivace) {
+        boolean isConnected = usbDivace.connect();
+        if (isConnected){
+            usbDivaces.add(usbDivace);
+        }
+
+    }
+    public void removeUSB(USBDivace usbDivace){
+        boolean isDisconnect = usbDivace.disconnect();
+        if (isDisconnect){
+            usbDivaces.add(usbDivace);
+        }
+       
     }
 }
